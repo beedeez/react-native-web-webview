@@ -1,6 +1,6 @@
 import Qs from 'qs';
 import React, { Component } from 'react';
-import { StyleSheet, View, ActivityIndicator, createElement } from 'react-native';
+import { StyleSheet, View, ActivityIndicator, unstable_createElement } from 'react-native';
 
 export default class extends Component {
   static defaultProps = {
@@ -14,7 +14,7 @@ export default class extends Component {
     this.handleSource(props.source, props.newWindow);
   }
 
-  setRef = ref => this.frameRef = ref;
+  setRef = ref => (this.frameRef = ref);
 
   handleSource = (source, newWindow) => {
     if (!source.method) return;
@@ -117,7 +117,7 @@ export default class extends Component {
 
     const { title, source, onLoad, scrollEnabled } = this.props;
     const styleObj = StyleSheet.flatten(this.props.style);
-    return createElement('iframe', {
+    return unstable_createElement('iframe', {
       title,
       ref: this.setRef,
       src: !source.method ? source.uri : undefined,
