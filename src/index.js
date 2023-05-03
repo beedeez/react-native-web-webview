@@ -115,8 +115,10 @@ export class WebView extends Component {
       );
     }
 
-    const { title, source, onLoad, scrollEnabled } = this.props;
+    const { title, source, onLoad, scrollEnabled, allow } = this.props;
     const styleObj = StyleSheet.flatten(this.props.style);
+		const defaultAllowAll = 'geolocation *; microphone *; camera *';
+
     return createElement('iframe', {
       title,
       ref: this.setRef,
@@ -130,6 +132,7 @@ export class WebView extends Component {
       frameBorder: '0',
       seamless: true,
       onLoad,
+			allow: allow || defaultAllowAll
     });
   }
 }
