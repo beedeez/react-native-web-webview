@@ -117,7 +117,7 @@ export class WebView extends Component {
 
     const { title, source, onLoad, scrollEnabled, allow } = this.props;
     const styleObj = StyleSheet.flatten(this.props.style);
-		const defaultAllowAll = 'geolocation *; microphone *; camera *';
+		const defaultAllowAll = 'geolocation *; microphone *; camera *; autoplay *';
 
     return createElement('iframe', {
       title,
